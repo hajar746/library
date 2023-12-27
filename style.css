@@ -1,0 +1,81 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Lato", sans-serif;
+}
+
+:root {
+  --rose-pompadour: #ff7993ff;
+  --white: #ffffffff;
+  --verdigris: #5ba0a4ff;
+  --honeydew: #d5e2d6ff;
+  --papaya-whip: #fef1d6ff;
+  --sandy-brown: #fea25eff;
+}
+
+/* HEADER */
+header {
+  display: flex;
+  padding: 2rem;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.title,
+.add {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+header h1 {
+  font-size: 3rem;
+}
+
+.logo {
+  width: 3rem;
+  height: 3.5rem;
+}
+
+.icon {
+  width: 3rem;
+  height: 3rem;
+}
+
+.add {
+  font-size: 1.5rem;
+  padding-right: 1rem;
+}
+
+/* WELCOME */
+.welcome {
+  background-color: var(--papaya-whip);
+  opacity: 0.8;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid rgb(174, 165, 165);
+  border-radius: 35px;
+  width: min(420px, 40%);
+  position: absolute;
+  top: 40%;
+  left: 35%;
+  padding: 2rem;
+  text-align: center;
+  font-size: 1.1rem;
+  letter-spacing: 1px;
+}
+
+.welcome h2 {
+  padding-bottom: 1rem;
+}
+
+.welcome p:first-of-type {
+  padding-bottom: 0.4rem;
+}
+
+.welcome img {
+  height: 2rem;
+  width: 2rem;
+  vertical-align: middle;
+}
