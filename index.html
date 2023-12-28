@@ -11,7 +11,6 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="style.css" />
-    <script src="script.js" defer></script>
   </head>
   <body>
     <header>
@@ -20,7 +19,9 @@
         <h1 class="brand">BookLocket</h1>
       </div>
       <div class="add">
-        <img src="imgs/add.png" alt="add book" class="icon" />
+        <button type="button" class="btn-add">
+          <img src="imgs/addition.png" alt="add-book" />
+        </button>
         <h3>Add Book</h3>
       </div>
     </header>
@@ -29,9 +30,38 @@
       <h2>Welcome to BookLocket!</h2>
       <p>An app to keep track of your reading.</p>
       <p>
-        Get started by pressing <img src="imgs/add.png" alt="add books" /> to
-        add a new book.
+        Get started by pressing
+        <img src="imgs/addition.png" alt="add books" /> to add a new book.
       </p>
     </section>
+    <div class="popup">
+      <button class="btn-close">
+        <img src="imgs/close.png" alt="close-form" />
+      </button>
+      <form action="">
+        <h2>New Book</h2>
+        <div class="form-element">
+          <label for="title">Title</label>
+          <input type="text" id="title" name="book-title" />
+        </div>
+        <div class="form-element">
+          <label for="author">Author</label>
+          <input type="text" id="author" name="book-author" />
+        </div>
+        <div class="form-element">
+          <label for="pages">Number of pages</label>
+          <input type="number" name="book-pages" id="pages" />
+        </div>
+        <div class="form-element">
+          <label for="read">Have you read the book already?</label>
+          <input type="checkbox" name="book-read" id="read" />
+        </div>
+        <div class="form-element">
+          <button>Add book</button>
+        </div>
+      </form>
+    </div>
+    <div class="books"></div>
+    <script src="script.js"></script>
   </body>
 </html>

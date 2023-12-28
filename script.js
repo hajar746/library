@@ -27,3 +27,19 @@ function displayBooks() {
     console.log(book);
   });
 }
+
+// SHOW NEW BOOK FORM
+const btnAddBook = document.querySelector(".btn-add");
+const form = document.querySelector(".popup");
+const btnCloseForm = document.querySelector(".btn-close");
+const appWelcome = document.querySelector(".welcome");
+
+// open form
+btnAddBook.addEventListener("click", function () {
+  form.classList.add("open-popup");
+  appWelcome.style.display = "none";
+});
+// close form
+btnCloseForm.addEventListener("click", function () {
+  form.classList.remove("open-popup");
+});
