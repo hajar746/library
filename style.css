@@ -188,3 +188,85 @@ form .form-element button:hover {
   box-shadow: -6px 5px 0px 1px rgb(49, 92, 95);
   transform: translate(0.2rem, -0.2rem);
 }
+
+/* BOOK CARDS */
+.books {
+  padding: 2rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 300px));
+  /* grid-template-rows: repeat(autofit); */
+  column-gap: 2rem;
+  row-gap: 2rem;
+}
+
+.card {
+  display: grid;
+  grid-template-areas:
+    "title"
+    "author"
+    "pages"
+    "read"
+    "edit";
+  background-color: var(--white);
+  width: 300px;
+  height: 230px;
+  padding: 1.5rem;
+  border-radius: 35px;
+  row-gap: 0.5rem;
+  align-content: center;
+  transition: transform 0.4s ease-in-out;
+}
+
+/* .card:hover {
+  box-shadow: -4px 4px 0px 1px var(--rose-pompadour);
+  transform: translate(0.2em, -0.2em);
+} */
+
+.card h2 {
+  grid-area: title;
+}
+
+.card .author {
+  grid-area: author;
+}
+
+.card .pages {
+  grid-area: pages;
+}
+
+.card .read {
+  grid-area: read;
+  background-color: var(--verdigris);
+}
+
+.card .read:hover {
+  box-shadow: -3px 3px 0px 1px rgb(49, 92, 95);
+}
+
+.card .edit {
+  grid-area: edit;
+  background-color: var(--sandy-brown);
+}
+
+.card .edit:hover {
+  box-shadow: -3px 3px 0px 1px rgb(220, 129, 65);
+}
+
+.card button {
+  border: none;
+  border-radius: 8px;
+  padding: 0.5rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.5s ease-in-out;
+}
+
+.card button:hover {
+  transform: translate(0.2em, -0.2em);
+}
+
+@media (max-width: 600px) {
+  .add h3 {
+    display: none;
+  }
+}

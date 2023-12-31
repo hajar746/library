@@ -1,11 +1,8 @@
 "use strict";
 
-const myLibrary = [
-  { title: "The Book Theif", author: "idontknow", pages: 1500, read: true },
-  { title: "Atomic Habits", author: "jamessomthing", pages: 500, read: false },
-];
+const myLibrary = [];
 
-// NEW BOOK FUNCTIONS
+// NEW BOOK CONSTRUCTOR
 function Book(title, author, pages, read) {
   this.title = title;
   this.author = author;
@@ -15,17 +12,19 @@ function Book(title, author, pages, read) {
 
 function addBookToLibrary(book) {
   myLibrary.push(book);
-}
-
-const book1 = new Book("The Alchemist", "idontknow", 345, true);
-addBookToLibrary(book1);
-
-console.log(myLibrary);
-
-function displayBooks() {
-  myLibrary.forEach((book) => {
-    console.log(book);
-  });
+  const allBooks = document.querySelector(".books");
+  allBooks.insertAdjacentHTML(
+    "beforeend",
+    `<div class="card">
+        <h2>${book.title}</h2>
+        <p class='author'>by <span>${book.author}</span></p>
+        <p class='pages'>${book.pages} pages</p>
+        <button class='read'>${
+          book.read === true ? "Read" : "Not read"
+        }</button>
+        <button class='edit'>Edit</button>
+      </div>`
+  );
 }
 
 // SHOW NEW BOOK FORM
@@ -38,10 +37,36 @@ const appWelcome = document.querySelector(".welcome");
 btnOpenModal.addEventListener("click", function () {
   modal.showModal();
   modal.classList.add("open-popup");
-  // appWelcome.style.display = "none";
 });
 // close form
 btnCloseModal.addEventListener("click", function () {
   modal.close();
   modal.classList.remove("open-popup");
+});
+
+// ADDING NEW BOOK TO LIBRARY
+const btnAddBook = document.querySelector(".add-book");
+const allInputs = document.querySelectorAll("input");
+
+btnAddBook.addEventListener("click", function (e) {
+  let valid = 0;
+  const title = document.querySelector("#title").value,
+    author = document.querySelector("#author").value,
+    pages = document.querySelector("#pages").value,
+    checkbox = document.querySelector("#read");
+  const newBook = new Book(title, author, pages, checkbox.checked);
+
+  // check for form validation
+  allInputs.forEach((input) => {
+    if (input.value !== "" || input.value === true || input.value === false)
+      valid++;
+  });
+  if (valid < 3) {
+    e.preventDefault();
+  } else {
+    addBookToLibrary(newBook);
+    appWelcome.style.display = "none";
+    document.querySelector("form").reset();
+    modal.close();
+  }
 });
