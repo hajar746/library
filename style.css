@@ -58,10 +58,6 @@ header h1 {
   background-color: inherit;
 }
 
-.btn-add img {
-  box-shadow: -3px 3px 0px 1px rgb(49, 92, 95);
-}
-
 .btn-add img:hover {
   transform: translate(0.3rem, -0.3rem);
   box-shadow: -5px 5px 0px 1px rgb(49, 92, 95);
@@ -83,7 +79,6 @@ header h1 {
   background-color: var(--white);
   display: flex;
   flex-direction: column;
-  /* border: 1px solid rgb(174, 165, 165); */
   border-radius: 35px;
   width: min(420px, 40%);
   position: absolute;
@@ -93,7 +88,7 @@ header h1 {
   text-align: center;
   font-size: 1.2rem;
   letter-spacing: 1px;
-  box-shadow: -6px 4px 0px 1px var(--papaya-whip);
+  box-shadow: 0 0 1em rgb(0 0 0/0.2);
 }
 
 .welcome h2 {
@@ -121,15 +116,18 @@ header h1 {
   padding: 2rem;
   background-color: white;
   border-radius: 35px;
-  box-shadow: -6px 4px 0px 1px var(--rose-pompadour);
+  /* box-shadow: -6px 4px 0px 1px var(--rose-pompadour); */
   transition: top 0ms ease-in-out 200ms, opacity 200ms ease-in-out 0ms,
     transform 20ms ease-in-out 0ms;
-  visibility: hidden;
+  border: 0;
+}
+
+.popup::backdrop {
+  background: rgb(0 0 0 /0.4);
 }
 
 .open-popup {
-  top: 60%;
-  visibility: visible;
+  top: 50%;
   transform: translate(-50%, -50%) scale(1);
   transition: top 0ms ease-in-out 0ms, opacity 200ms ease-in-out 0ms,
     transform 200ms ease-in-out 0ms;
@@ -139,16 +137,12 @@ header h1 {
   position: absolute;
   top: 10px;
   right: 15px;
-}
-
-.popup .btn-close img {
-  box-shadow: -3px 3px 0px 1px var(--rose-pompadour);
   border-radius: 23%;
 }
 
 .popup .btn-close img:hover {
   transform: translate(0.2rem, -0.2rem);
-  box-shadow: -5px 5px 0px 1px var(--rose-pompadour);
+  box-shadow: -4px 4px 0px 1px var(--rose-pompadour);
 }
 
 form h2 {
@@ -187,11 +181,10 @@ form .form-element button {
   color: white;
   border-radius: 10px;
   cursor: pointer;
-  box-shadow: -4px 4px 0px 1px rgb(49, 92, 95);
   transition: all 0.5s ease-in-out;
 }
 
 form .form-element button:hover {
-  box-shadow: -7px 5px 0px 1px rgb(49, 92, 95);
+  box-shadow: -6px 5px 0px 1px rgb(49, 92, 95);
   transform: translate(0.2rem, -0.2rem);
 }
