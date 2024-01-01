@@ -189,26 +189,31 @@ form .form-element button:hover {
   transform: translate(0.2rem, -0.2rem);
 }
 
+.error {
+  display: none;
+  color: #be1212;
+}
+
 /* BOOK CARDS */
 .books {
   padding: 2rem;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(100px, 300px));
-  /* grid-template-rows: repeat(autofit); */
-  column-gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 260px));
+  column-gap: 2.5rem;
   row-gap: 2rem;
 }
 
 .card {
   display: grid;
   grid-template-areas:
+    "delete"
     "title"
     "author"
     "pages"
     "read"
     "edit";
   background-color: var(--white);
-  width: 300px;
+  width: auto;
   height: 230px;
   padding: 1.5rem;
   border-radius: 35px;
@@ -216,11 +221,6 @@ form .form-element button:hover {
   align-content: center;
   transition: transform 0.4s ease-in-out;
 }
-
-/* .card:hover {
-  box-shadow: -4px 4px 0px 1px var(--rose-pompadour);
-  transform: translate(0.2em, -0.2em);
-} */
 
 .card h2 {
   grid-area: title;
@@ -236,11 +236,17 @@ form .form-element button:hover {
 
 .card .read {
   grid-area: read;
-  background-color: var(--verdigris);
+  background-color: var(--rose-pompadour);
 }
 
 .card .read:hover {
-  box-shadow: -3px 3px 0px 1px rgb(49, 92, 95);
+  box-shadow: -3px 3px 0px 1px rgb(193, 82, 104);
+}
+
+.card .read:active {
+  box-shadow: -1px 1px 0px 1px rgb(193, 82, 104);
+  transform: translate(-0.2em, 0.2em);
+  transition: all 0.7s ease-in-out;
 }
 
 .card .edit {
@@ -263,6 +269,21 @@ form .form-element button:hover {
 
 .card button:hover {
   transform: translate(0.2em, -0.2em);
+}
+
+.card .btn-delete {
+  width: 1.5rem;
+  height: 1.5rem;
+  grid-area: delete;
+  justify-self: end;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: all 0.5s ease-in-out;
+}
+
+.card .btn-delete:hover {
+  transform: translate(0.2rem, -0.2rem);
+  box-shadow: -2px 2px 0px 1px var(--rose-pompadour);
 }
 
 @media (max-width: 600px) {
