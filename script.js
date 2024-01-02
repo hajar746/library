@@ -15,9 +15,9 @@ Book.prototype.addBook = function () {
   const allBooks = document.querySelector(".books");
   allBooks.insertAdjacentHTML(
     "beforeend",
-    `<div class="card">
+    `<div class="card" data-book='${this.title}'>
           <img src="imgs/close.png" alt="close-form" class="btn-delete"/>
-          <h2>${this.title}</h2>
+          <h2 class='title'>${this.title}</h2>
           <p class='author'>by <span>${this.author}</span></p>
           <p class='pages'>${this.pages} pages</p>
           <button class='read'>${
@@ -28,13 +28,12 @@ Book.prototype.addBook = function () {
   );
 };
 
-Book.prototype.readStatus = function () {
-  if (this.read === true) {
-    this.read = false;
-  }
-  if (this.read === false) {
-    this.read = true;
-  }
+// PROTOYPE METHODS TO CHANGE READ STATUS ////////////////
+Book.prototype.alreadyRead = function () {
+  this.read = true;
+};
+Book.prototype.notRead = function () {
+  this.read = false;
 };
 
 // SHOW NEW BOOK FORM ////////////
@@ -83,37 +82,37 @@ btnAddBook.addEventListener("click", function (e) {
     e.preventDefault();
     errorMesg.style.display = "block";
   }
-  console.log(myLibrary);
 });
 
-// MARKING BOOK AS READ/NOT READ /////////
-document.addEventListener("click", function (e) {
-  const target = e.target.closest(".read");
-  if (!target) return;
-
-  if (target && target.textContent === "Read") {
-    target.textContent = "Not read";
-    target.classList.add("not-read");
-    target.style.display = "block";
-  } else {
-    target.textContent = "Read";
-    target.classList.add("already-read");
-    target.classList.remove("not-read");
-    target.style.display = "block";
-  }
-
-  console.log(myLibrary);
+// MARKING BOOK AS READ/NOT READ ////////////////////
+document.addEventListener("DOMContentLoaded", function () {
+  document.addEventListener("click", function (e) {
+    const target = e.target.closest(".read");
+    if (!target) return;
+    const bookCard = e.target.closest(".card");
+    const index = myLibrary.findIndex(
+      (book) => book.title === bookCard.dataset.book
+    );
+    if (target && target.textContent === "Read") {
+      target.textContent = "Not read";
+      myLibrary[index].notRead();
+    } else if (target && target.textContent === "Not read") {
+      target.textContent = "Read";
+      myLibrary[index].alreadyRead();
+    }
+  });
 });
 
-// DELETING A BOOK /////////
+// DELETING A BOOK ///////////////
 document.addEventListener("click", function (e) {
   const target = e.target.closest(".btn-delete");
-  const book = e.target.closest(".card");
-  const bookTitle = e.target.closest(".title");
+  const bookCard = e.target.closest(".card");
 
   if (target) {
-    const index = myLibrary.findIndex((book) => book.title === bookTitle);
+    const index = myLibrary.findIndex(
+      (book) => book.title === bookCard.dataset.book
+    );
     myLibrary.splice(index, 1);
-    book.remove();
+    bookCard.remove();
   }
 });

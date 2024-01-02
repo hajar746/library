@@ -214,7 +214,7 @@ form .form-element button:hover {
     "edit";
   background-color: var(--white);
   width: auto;
-  height: 230px;
+  height: 250px;
   padding: 1.5rem;
   border-radius: 35px;
   row-gap: 0.5rem;
