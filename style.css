@@ -198,7 +198,7 @@ form .form-element button:hover {
 .books {
   padding: 2rem;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(100px, 260px));
+  grid-template-columns: repeat(auto-fit, minmax(100px, 270px));
   column-gap: 2.5rem;
   row-gap: 2rem;
 }
@@ -206,15 +206,14 @@ form .form-element button:hover {
 .card {
   display: grid;
   grid-template-areas:
-    "delete"
     "title"
     "author"
     "pages"
     "read"
-    "edit";
+    "delete";
   background-color: var(--white);
   width: auto;
-  height: 250px;
+  height: 240px;
   padding: 1.5rem;
   border-radius: 35px;
   row-gap: 0.5rem;
@@ -224,6 +223,7 @@ form .form-element button:hover {
 
 .card h2 {
   grid-area: title;
+  font-size: min(1.5rem, 1.8rem);
 }
 
 .card .author {
@@ -236,26 +236,15 @@ form .form-element button:hover {
 
 .card .read {
   grid-area: read;
-  background-color: var(--rose-pompadour);
-}
-
-.card .read:hover {
-  box-shadow: -3px 3px 0px 1px rgb(193, 82, 104);
-}
-
-.card .read:active {
-  box-shadow: -1px 1px 0px 1px rgb(193, 82, 104);
-  transform: translate(-0.2em, 0.2em);
-  transition: all 0.7s ease-in-out;
-}
-
-.card .edit {
-  grid-area: edit;
   background-color: var(--sandy-brown);
 }
 
-.card .edit:hover {
-  box-shadow: -3px 3px 0px 1px rgb(220, 129, 65);
+.card .read:hover {
+  box-shadow: -3px 3px 0px 1px rgb(210, 123, 60);
+}
+
+.card .read:active {
+  box-shadow: -1px 1px 0px 1px rgb(210, 123, 60);
 }
 
 .card button {
@@ -271,19 +260,26 @@ form .form-element button:hover {
   transform: translate(0.2em, -0.2em);
 }
 
+.card button:active {
+  transform: translate(-0.2em, 0.2em);
+  transition: all 0.7s ease-in-out;
+}
+
 .card .btn-delete {
-  width: 1.5rem;
-  height: 1.5rem;
   grid-area: delete;
-  justify-self: end;
   cursor: pointer;
   border-radius: 6px;
   transition: all 0.5s ease-in-out;
+  background-color: var(--rose-pompadour);
 }
 
 .card .btn-delete:hover {
   transform: translate(0.2rem, -0.2rem);
-  box-shadow: -2px 2px 0px 1px var(--rose-pompadour);
+  box-shadow: -3px 3px 0px 1px rgb(223, 85, 113);
+}
+
+.card .btn-delete:active {
+  box-shadow: -1px 1px 0px 1px rgb(223, 85, 113);
 }
 
 @media (max-width: 600px) {

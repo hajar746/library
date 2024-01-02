@@ -1,6 +1,7 @@
 "use strict";
 
 const myLibrary = [];
+const allBooks = document.querySelector(".books");
 
 // NEW BOOK CONSTRUCTOR ////////////////
 function Book(title, author, pages, read) {
@@ -12,18 +13,16 @@ function Book(title, author, pages, read) {
 
 Book.prototype.addBook = function () {
   myLibrary.push(this);
-  const allBooks = document.querySelector(".books");
   allBooks.insertAdjacentHTML(
     "beforeend",
     `<div class="card" data-book='${this.title}'>
-          <img src="imgs/close.png" alt="close-form" class="btn-delete"/>
           <h2 class='title'>${this.title}</h2>
           <p class='author'>by <span>${this.author}</span></p>
           <p class='pages'>${this.pages} pages</p>
           <button class='read'>${
             this.read === true ? "Read" : "Not read"
           }</button>
-          <button class='edit'>Edit</button>
+          <button class='btn-delete'>Delete</button>
         </div>`
   );
 };
@@ -114,5 +113,9 @@ document.addEventListener("click", function (e) {
     );
     myLibrary.splice(index, 1);
     bookCard.remove();
+
+    if (allBooks.childNodes.length === 0) {
+      appWelcome.style.display = "block";
+    }
   }
 });
