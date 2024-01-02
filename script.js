@@ -11,6 +11,7 @@ function Book(title, author, pages, read) {
   this.read = Boolean(read);
 }
 
+// PROTOTYPE METHOD TO ADD A NEW BOOK /////////////////
 Book.prototype.addBook = function () {
   myLibrary.push(this);
   allBooks.insertAdjacentHTML(
@@ -35,7 +36,7 @@ Book.prototype.notRead = function () {
   this.read = false;
 };
 
-// SHOW NEW BOOK FORM ////////////
+// SHOW NEW BOOK FORM /////////////////////
 const btnOpenModal = document.querySelector(".btn-add");
 const modal = document.querySelector(".popup");
 const btnCloseModal = document.querySelector(".btn-close");
@@ -52,7 +53,7 @@ btnCloseModal.addEventListener("click", function () {
   modal.classList.remove("open-popup");
 });
 
-// ADDING NEW BOOK TO LIBRARY USING FORM INFO ///////////
+// ADDING NEW BOOK TO LIBRARY USING FORM INFO /////////////////////////
 const btnAddBook = document.querySelector(".add-book");
 const allInputs = document.querySelectorAll("input");
 const errorMesg = document.querySelector(".error");
@@ -102,18 +103,19 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
-// DELETING A BOOK ///////////////
+// DELETING A BOOK ///////////////////
 document.addEventListener("click", function (e) {
   const target = e.target.closest(".btn-delete");
   const bookCard = e.target.closest(".card");
 
   if (target) {
+    // finding index of book that needs to be deleted
     const index = myLibrary.findIndex(
       (book) => book.title === bookCard.dataset.book
     );
     myLibrary.splice(index, 1);
     bookCard.remove();
-
+    // display welcome message
     if (allBooks.childNodes.length === 0) {
       appWelcome.style.display = "block";
     }
