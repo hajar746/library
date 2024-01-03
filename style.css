@@ -189,7 +189,8 @@ form .form-element button:hover {
   transform: translate(0.2rem, -0.2rem);
 }
 
-.error {
+.error,
+.num-error {
   display: none;
   color: #be1212;
 }
