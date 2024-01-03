@@ -58,7 +58,6 @@ const btnAddBook = document.querySelector(".add-book");
 const allInputs = document.querySelectorAll("input");
 const errorMesg = document.querySelector(".error");
 const form = document.querySelector("form");
-const numInput = document.querySelector("#pages");
 const numError = document.querySelector(".num-error");
 
 btnAddBook.addEventListener("click", function (e) {
@@ -78,14 +77,16 @@ btnAddBook.addEventListener("click", function (e) {
     errorMesg.style.display = "block";
     e.preventDefault();
   }
-  if (valid > 3) {
+  if (valid > 3 && form.checkValidity()) {
     newBook.addBook();
     appWelcome.style.display = "none";
     form.reset();
     modal.close();
     errorMesg.style.display = "none";
+  } else {
+    e.preventDefault();
+    form.reportValidity();
   }
-  console.log(myLibrary);
 });
 
 // MARKING BOOK AS READ/NOT READ ////////////////////
