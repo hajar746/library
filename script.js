@@ -4,19 +4,26 @@ const myLibrary = [];
 const allBooks = document.querySelector(".books");
 
 // NEW BOOK CONSTRUCTOR ////////////////
-function Book(title, author, pages, read) {
-  this.title = title;
-  this.author = author;
-  this.pages = pages;
-  this.read = Boolean(read);
-}
+// function Book(title, author, pages, read) {
+//   this.title = title;
+//   this.author = author;
+//   this.pages = pages;
+//   this.read = Boolean(read);
+// }
 
-// PROTOTYPE METHOD TO ADD A NEW BOOK /////////////////
-Book.prototype.addBook = function () {
-  myLibrary.push(this);
-  allBooks.insertAdjacentHTML(
-    "beforeend",
-    `<div class="card" data-book='${this.title}'>
+class Book {
+  constructor(title, author, pages, read) {
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.read = read;
+  }
+
+  addBook() {
+    myLibrary.push(this);
+    allBooks.insertAdjacentHTML(
+      "beforeend",
+      `<div class="card" data-book='${this.title}'>
           <h2 class='title'>${this.title}</h2>
           <p class='author'>by <span>${this.author}</span></p>
           <p class='pages'>${this.pages} pages</p>
@@ -25,16 +32,42 @@ Book.prototype.addBook = function () {
           }</button>
           <button class='btn-delete'>Delete</button>
         </div>`
-  );
-};
+    );
+  }
+
+  alreadyRead() {
+    this.read = true;
+  }
+
+  notRead() {
+    this.read = false;
+  }
+}
+
+// PROTOTYPE METHOD TO ADD A NEW BOOK /////////////////
+// Book.prototype.addBook = function () {
+//   myLibrary.push(this);
+//   allBooks.insertAdjacentHTML(
+//     "beforeend",
+//     `<div class="card" data-book='${this.title}'>
+//           <h2 class='title'>${this.title}</h2>
+//           <p class='author'>by <span>${this.author}</span></p>
+//           <p class='pages'>${this.pages} pages</p>
+//           <button class='read'>${
+//             this.read === true ? "Read" : "Not read"
+//           }</button>
+//           <button class='btn-delete'>Delete</button>
+//         </div>`
+//   );
+// };
 
 // PROTOYPE METHODS TO CHANGE READ STATUS ////////////////
-Book.prototype.alreadyRead = function () {
-  this.read = true;
-};
-Book.prototype.notRead = function () {
-  this.read = false;
-};
+// Book.prototype.alreadyRead = function () {
+//   this.read = true;
+// };
+// Book.prototype.notRead = function () {
+//   this.read = false;
+// };
 
 // SHOW NEW BOOK FORM /////////////////////
 const btnOpenModal = document.querySelector(".btn-add");
