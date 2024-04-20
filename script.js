@@ -3,14 +3,6 @@
 const myLibrary = [];
 const allBooks = document.querySelector(".books");
 
-// NEW BOOK CONSTRUCTOR ////////////////
-// function Book(title, author, pages, read) {
-//   this.title = title;
-//   this.author = author;
-//   this.pages = pages;
-//   this.read = Boolean(read);
-// }
-
 class Book {
   constructor(title, author, pages, read) {
     this.title = title;
@@ -44,31 +36,6 @@ class Book {
   }
 }
 
-// PROTOTYPE METHOD TO ADD A NEW BOOK /////////////////
-// Book.prototype.addBook = function () {
-//   myLibrary.push(this);
-//   allBooks.insertAdjacentHTML(
-//     "beforeend",
-//     `<div class="card" data-book='${this.title}'>
-//           <h2 class='title'>${this.title}</h2>
-//           <p class='author'>by <span>${this.author}</span></p>
-//           <p class='pages'>${this.pages} pages</p>
-//           <button class='read'>${
-//             this.read === true ? "Read" : "Not read"
-//           }</button>
-//           <button class='btn-delete'>Delete</button>
-//         </div>`
-//   );
-// };
-
-// PROTOYPE METHODS TO CHANGE READ STATUS ////////////////
-// Book.prototype.alreadyRead = function () {
-//   this.read = true;
-// };
-// Book.prototype.notRead = function () {
-//   this.read = false;
-// };
-
 // SHOW NEW BOOK FORM /////////////////////
 const btnOpenModal = document.querySelector(".btn-add");
 const modal = document.querySelector(".popup");
@@ -88,35 +55,24 @@ btnCloseModal.addEventListener("click", function () {
 
 // ADDING NEW BOOK TO LIBRARY USING FORM INFO /////////////////////////
 const btnAddBook = document.querySelector(".add-book");
-const allInputs = document.querySelectorAll("input");
 const errorMesg = document.querySelector(".error");
 const form = document.querySelector("form");
-const numError = document.querySelector(".num-error");
 
 btnAddBook.addEventListener("click", function (e) {
-  let valid = 0;
   const title = document.querySelector("#title").value,
     author = document.querySelector("#author").value,
     pages = document.querySelector("#pages").value,
     checkbox = document.querySelector("#read");
   const newBook = new Book(title, author, pages, checkbox.checked);
 
-  // check for form validation
-  allInputs.forEach((input) => {
-    if (input.value !== "" || input.value === true || input.value === false)
-      valid++;
-  });
-  if (valid < 3) {
-    errorMesg.style.display = "block";
-    e.preventDefault();
-  }
-  if (valid > 3 && form.checkValidity()) {
+  if (form.checkValidity()) {
     newBook.addBook();
     appWelcome.style.display = "none";
     form.reset();
     modal.close();
-    errorMesg.style.display = "none";
+    errorMesg.textContent = "";
   } else {
+    errorMesg.textContent = "Please fill out all fields";
     e.preventDefault();
     form.reportValidity();
   }

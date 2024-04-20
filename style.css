@@ -190,8 +190,11 @@ form .form-element button:hover {
 }
 
 .error {
-  display: none;
   color: #be1212;
+}
+
+input:focus:invalid {
+  outline: none;
 }
 
 /* BOOK CARDS */
